@@ -9,5 +9,6 @@ import streamlit as slt
 
 df = pd.read_csv("WineQT.csv")
 print("Data info:")
-print(df.describe(8*13))
+print(df.describe())
 print(df.head())
+
