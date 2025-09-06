@@ -34,7 +34,7 @@ model=Sequential(
 )
 
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-model.fit(x_train, y_train, validation_data=(X_test, y_test), epochs=1000)
+model.fit(x_train, y_train, validation_data=(X_test, y_test), epochs=2)
 test_loss, test_acc = model.evaluate(X_test, y_test)
 print("Test accuracy:", test_acc)
 
