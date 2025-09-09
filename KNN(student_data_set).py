@@ -5,7 +5,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 
-df = pd.read_csv("Downloads/exams.csv")
+df = pd.read_csv("D:\Python project\Machine_learning_projects\exams.csv")
 
 
 df['average_score'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
