@@ -18,3 +18,6 @@ x_test=x_test.reshape((-1,28,28,1))
 
 print("Training data shape:", x_train.shape, y_train.shape)
 print("Testing data shape:", x_test.shape, y_test.shape)
+
+x_train,x_val,y_train,y_val=train_test_split(x_train,y_train,test_size=0.2,random_state=42)
+
