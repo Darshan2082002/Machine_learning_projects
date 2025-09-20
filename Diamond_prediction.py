@@ -20,7 +20,12 @@ data['color'].replace({'J':1,'I':2,'H':3,'G':4,'F':5,'E':6,'D':7},inplace=True)
 print(data.head())
 print(data.isnull().sum())
 
-x_train,x_test,y_train,y_test=train_test_split(data.drop(columns=['price']),data['price'],test_size=0.2,random_state=42)
+# create feature matrix X and target y
+X = data.drop(columns=['price'])
+y = data['price']
+
+# split using X and y
+x_train,x_test,y_train,y_test=train_test_split(X, y, test_size=0.2, random_state=42)
 model=LinearRegression()
 model.fit(x_train,y_train)
 y_pred=model.predict(x_test)
@@ -32,7 +37,7 @@ st.title("💎 Diamond Price Prediction App")
 
 st.sidebar.header("Enter Diamond Features")
 
-carat = st.sidebar.number_input("Carat", min_value=0.1, max_value=5.0, value=1.0, step=0.1)
+
 cut = st.sidebar.selectbox("Cut", options={1:"Fair", 2:"Good", 3:"Very Good", 4:"Premium", 5:"Ideal"}.keys(), 
                            format_func=lambda x: {1:"Fair",2:"Good",3:"Very Good",4:"Premium",5:"Ideal"}[x])
 color = st.sidebar.selectbox("Color", options={1:"J",2:"I",3:"H",4:"G",5:"F",6:"E",7:"D"}.keys(),
@@ -46,7 +51,7 @@ z_val = st.sidebar.number_input("z (depth in mm)", min_value=0.0, max_value=15.0
 # Prediction button
 if st.sidebar.button("Predict Price"):
     # Ensure features order matches X.columns
-    features = np.array([[carat, cut, color, depth, table, x_val, y_val, z_val]])
+    features = np.array([[ cut, color, depth, table, x_val, y_val, z_val]])
     prediction = model.predict(features)[0]
     st.success(f"Estimated Price: ${prediction:,.2f}")
 
@@ -64,14 +69,6 @@ st.pyplot(fig)
 fig, ax = plt.subplots(figsize=(10,6))
 sns.histplot(data['price'], bins=30, kde=True, ax=ax)
 ax.set_title("Price Distribution")
-st.pyplot(fig)
-
-# Carat vs Price
-fig, ax = plt.subplots(figsize=(10,6))
-ax.scatter(data['carat'], data['price'], alpha=0.5)
-ax.set_xlabel("Carat")
-ax.set_ylabel("Price")
-ax.set_title("Carat vs Price")
 st.pyplot(fig)
 
 # Show what features model expects
