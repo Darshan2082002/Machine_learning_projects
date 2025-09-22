@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
+import matplotlib.pyplot as plt
 
 
 df = pd.read_csv("D:\Python project\Machine_learning_projects\exams.csv")
@@ -39,3 +40,8 @@ y_pred = knn.predict(X_test_scaled)
 
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
+plt.bar(["KNN"], [accuracy])
+plt.ylim(0, 1)  # Accuracy range between 0 and 1
+plt.ylabel("Accuracy")
+plt.title("Model Accuracy")
+plt.show()
