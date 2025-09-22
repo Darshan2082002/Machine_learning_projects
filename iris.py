@@ -44,20 +44,20 @@ print("Accuracy Score:",accuracy_score(y_test,y_pred)*100)
 # Save model
 joblib.dump(ml,'iris_model.joblib')
 
-# Load model
+
 model = joblib.load("iris_model.joblib")
 
 
 st.title("🌸 Iris Flower Classifier")
 st.write("Enter flower measurements to predict species")
 
-# Input fields
+
 sepal_length = st.number_input("Sepal Length (cm)", min_value=0.0, max_value=10.0, value=5.0)
 sepal_width  = st.number_input("Sepal Width (cm)", min_value=0.0, max_value=10.0, value=3.0)
 petal_length = st.number_input("Petal Length (cm)", min_value=0.0, max_value=10.0, value=1.5)
 petal_width  = st.number_input("Petal Width (cm)", min_value=0.0, max_value=10.0, value=0.2)
 
-# Prediction
+
 if st.button("Predict"):
     features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
     prediction = model.predict(features)
