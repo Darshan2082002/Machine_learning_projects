@@ -40,7 +40,7 @@ y_pred = knn.predict(X_test_scaled)
 
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
-plt.bar(["KNN"], [accuracy])
+plt.bar(["KNN"], [accuracy_score(y_test, y_pred)], color='blue')
 plt.ylim(0, 1)  # Accuracy range between 0 and 1
 plt.ylabel("Accuracy")
 plt.title("Model Accuracy")
