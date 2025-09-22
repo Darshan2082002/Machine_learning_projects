@@ -14,8 +14,8 @@ plt.imshow(X_train[1], cmap='gray')
 plt.title(f"Label: {y_train[0]}")
 plt.show()
 
-X_train=X_train/255.0
-X_test=X_test/255.0
+X_train=X_train/200.0
+X_test=X_test/200.0
 
 x_train=X_train.reshape((-1,28,28,1))
 X_test=X_test.reshape((-1,28,28,1))
