@@ -12,7 +12,7 @@ print("Testing data shape:", X_test.shape, y_test.shape)
 
 plt.imshow(X_train[1], cmap='gray')
 plt.title(f"Label: {y_train[0]}")
-plt.show()
+
 
 X_train=X_train/255.0
 X_test=X_test/255.0
