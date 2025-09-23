@@ -4,6 +4,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 import matplotlib.pyplot as plt
+from sklearn.model_selection import cross_val_score, StratifiedKFold
+from sklearn.pipeline import make_pipeline
 
 
 df = pd.read_csv("D:\Python project\Machine_learning_projects\exams.csv")
@@ -29,6 +31,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
+
+
+pipeline = make_pipeline(StandardScaler(), KNeighborsClassifier(n_neighbors=5))
+
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+cv_scores = cross_val_score(pipeline, X, y, cv=cv, scoring='accuracy')
+
+print(f"Cross-validation accuracy: mean={cv_scores.mean():.4f}, std={cv_scores.std():.4f}")
 
 
 knn = KNeighborsClassifier(n_neighbors=5)

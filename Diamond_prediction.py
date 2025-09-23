@@ -12,8 +12,17 @@ print(data.head())
 print(data.info())
 print(data.describe())
 
-data.drop(columns=['clarity'],inplace=True)
-data['cut'].replace({'Fair':1,'Good':2,'Very Good':3,'Premium':4,'Ideal':5},inplace=True)
+# wrong: data = data.drop(columns=['clarity'] ,axis=1,inplace=True)
+# fix 1 — use inplace without assignment:
+data.drop(columns=['clarity'], inplace=True)
+
+# or fix 2 — assign the result (preferred for clarity):
+# data = data.drop(columns=['clarity'])
+
+# ensure 'cut' exists before mapping
+if 'cut' in data.columns:
+    data['cut'] = data['cut'].replace({'Fair':0, 'Good':1, 'Very Good':2, 'Premium':3, 'Ideal':4})
+
 data['color'].replace({'J':1,'I':2,'H':3,'G':4,'F':5,'E':6,'D':7},inplace=True)
 
 
