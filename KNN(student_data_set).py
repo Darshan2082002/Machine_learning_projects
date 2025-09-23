@@ -31,27 +31,42 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
-
-
 pipeline = make_pipeline(StandardScaler(), KNeighborsClassifier(n_neighbors=5))
-
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 cv_scores = cross_val_score(pipeline, X, y, cv=cv, scoring='accuracy')
-
 print(f"Cross-validation accuracy: mean={cv_scores.mean():.4f}, std={cv_scores.std():.4f}")
 
+# Check different k values
+k_values = range(1, 21)  # k from 1 to 20
+accuracies = []
 
-knn = KNeighborsClassifier(n_neighbors=5)
+for k in k_values:
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(X_train_scaled, y_train)
+    y_pred = knn.predict(X_test_scaled)
+    acc = accuracy_score(y_test, y_pred)
+    accuracies.append(acc)
+    print(f"k={k}, Accuracy={acc:.4f}")
+
+# Best k
+best_k = k_values[accuracies.index(max(accuracies))]
+print(f"\nBest k = {best_k} with Accuracy = {max(accuracies):.4f}")
+
+# Final model with best k
+knn = KNeighborsClassifier(n_neighbors=best_k)
 knn.fit(X_train_scaled, y_train)
-
-
 y_pred = knn.predict(X_test_scaled)
 
-
+print("\nFinal Model Evaluation")
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
-plt.bar(["KNN"], [accuracy_score(y_test, y_pred)], color='blue')
-plt.ylim(0, 1)  # Accuracy range between 0 and 1
+
+# Plot accuracy vs k
+plt.figure(figsize=(8, 5))
+plt.plot(k_values, accuracies, marker='o', linestyle='-', color='blue')
+plt.xticks(k_values)
+plt.xlabel("Number of Neighbors (k)")
 plt.ylabel("Accuracy")
-plt.title("Model Accuracy")
+plt.title("KNN Accuracy for Different k values")
+plt.grid(True)
 plt.show()
