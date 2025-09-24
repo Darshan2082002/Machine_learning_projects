@@ -53,3 +53,25 @@ print("The Mean Absolute Error for Ridge:", mean_absolute_error(y_test, y_pred2)
 print("The R^2 Score for Ridge", r2_score(y_test, y_pred2)*100)
 
 
+plt.figure(figsize=(12,5))
+
+plt.subplot(1,3,1)
+plt.scatter(y_test, y_pred, alpha=0.5)
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title("Linear Regression")
+
+plt.subplot(1,3,2)
+plt.scatter(y_test, y_pred1, alpha=0.5, color='orange')
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title("Lasso Regression")
+
+plt.subplot(1,3,3)
+plt.scatter(y_test, y_pred2, alpha=0.5, color='green')
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title("Ridge Regression")
+
+plt.tight_layout()
+plt.show()
