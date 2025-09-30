@@ -22,3 +22,4 @@ y_pred=model.predict(X_test)
 print("MSE:", mean_squared_error(y_test, y_pred))
 print("MAE:", mean_absolute_error(y_test, y_pred))
 print("R2 Score:", r2_score(y_test, y_pred))
+
