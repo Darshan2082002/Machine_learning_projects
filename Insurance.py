@@ -3,5 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 data=pd.read_csv("insurance.csv")
+
+
+data['sex'].map({'male': 1, 'female': 2})
 print(data.head)
 print(data.info)
