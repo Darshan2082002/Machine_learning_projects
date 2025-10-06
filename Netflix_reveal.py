@@ -6,3 +6,5 @@ from sklearn.preprocessing import OneHotEncoder
 data=pd.read_csv('netflix_titles.csv', encoding='latin-1')
 print(data.info())
 print(data.head(5))
+
+encoder=OneHotEncoder(sparse_output=False)
