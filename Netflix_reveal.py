@@ -25,7 +25,6 @@ encoded_df = pd.DataFrame(
 final_df = pd.concat([df.drop(columns=categorical_cols), encoded_df], axis=1)
 
 
-import sys
-sys.stdout.reconfigure(encoding='utf-8')
+
 
 print(final_df.tail())
