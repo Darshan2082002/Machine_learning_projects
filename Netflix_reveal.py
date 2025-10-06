@@ -7,4 +7,8 @@ data=pd.read_csv('netflix_titles.csv', encoding='latin-1')
 print(data.info())
 print(data.head(5))
 
+df=pd.DataFrame(data)
 encoder=OneHotEncoder(sparse_output=False)
+encoder_features = encoder.fit_transform(df[['show_id', 'type', 'title', 'director', 'cast', 'country',
+                                             'date_added', 'release_year', 'rating', 'duration',
+                                             'listed_in', 'description']])
