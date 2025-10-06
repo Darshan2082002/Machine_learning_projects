@@ -11,7 +11,7 @@ df = pd.DataFrame(data)
 
 categorical_cols = ['type', 'country', 'rating', 'listed_in']
 
-r
+
 encoder = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
 
 encoder_features = encoder.fit_transform(df[categorical_cols])
@@ -28,4 +28,4 @@ final_df = pd.concat([df.drop(columns=categorical_cols), encoded_df], axis=1)
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-print(final_df.head())
+print(final_df.tail())
