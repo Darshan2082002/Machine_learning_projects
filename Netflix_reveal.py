@@ -28,3 +28,7 @@ final_df = pd.concat([df.drop(columns=categorical_cols), encoded_df], axis=1)
 
 
 print(final_df.tail())
+
+
+
+
