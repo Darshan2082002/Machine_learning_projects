@@ -6,8 +6,6 @@ from sklearn.metrics import accuracy_score, classification_report
 import matplotlib.pyplot as plt
 from sklearn.model_selection import cross_val_score, StratifiedKFold
 from sklearn.pipeline import make_pipeline
-
-
 df = pd.read_csv("D:\Python project\Machine_learning_projects\exams.csv")
 
 
