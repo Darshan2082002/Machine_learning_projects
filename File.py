@@ -1,1 +1,3 @@
-def 
+def  code():
+  self.init 
+sellf 
