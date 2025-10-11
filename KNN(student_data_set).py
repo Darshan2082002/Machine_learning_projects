@@ -14,10 +14,7 @@ df = pd.read_csv("D:\Python project\Machine_learning_projects\exams.csv")
 df['average_score'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
 df['passed'] = (df['average_score'] >= 60).astype(int)
 
-
 df.drop(['average_score'], axis=1, inplace=True)
-
-
 df_encoded = pd.get_dummies(df.drop('passed', axis=1), drop_first=True)
 
 
