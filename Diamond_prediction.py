@@ -70,8 +70,7 @@ if st.sidebar.button("Predict Price"):
     prediction = model.predict(features)[0]
     st.success(f"Estimated Price: ${prediction:,.2f}")
 
-# -------------------------------
-# Visualizations
+
 # -------------------------------
 st.subheader("📊 Data Insights")
 
