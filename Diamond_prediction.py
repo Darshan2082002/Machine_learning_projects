@@ -7,6 +7,12 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import streamlit as st
 
+
+
+
+
+
+
 data=pd.read_csv("diamonds.csv")
 print(data.head())
 print(data.info())
@@ -64,8 +70,7 @@ if st.sidebar.button("Predict Price"):
     prediction = model.predict(features)[0]
     st.success(f"Estimated Price: ${prediction:,.2f}")
 
-# -------------------------------
-# Visualizations
+
 # -------------------------------
 st.subheader("📊 Data Insights")
 
