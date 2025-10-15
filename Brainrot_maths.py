@@ -89,3 +89,15 @@ results = {
 
 results_text = "\n".join([f"{k}: {v}" for k, v in results.items()])
 print("Results:\n", results_text)
+
+# --- Add plot comparing predictions vs actual for both models ---
+plt.figure(figsize=(10, 5))
+plt.plot(y_test.values, label="Actual", marker='o')
+plt.plot(y_pred_closed, label="Closed-form OLS Prediction", linestyle='--', marker='x')
+plt.plot(y_pred_lr, label="Sklearn LinearRegression Prediction", linestyle=':', marker='s')
+plt.title("Actual vs Predicted Values")
+plt.xlabel("Test Sample Index")
+plt.ylabel("Target Value")
+plt.legend()
+plt.tight_layout()
+plt.show()
