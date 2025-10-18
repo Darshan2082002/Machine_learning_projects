@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt 
 from sklearn.model_selection import train_test_split
-
+from sklearn.linear import LinearRegression #it supervised model which is used to predict the data
+from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
 # data or file integration into  the system to train the model 
 data=pd.read_csv('NaivesBayes.csv')
 
