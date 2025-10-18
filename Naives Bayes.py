@@ -15,6 +15,8 @@ y=" test" # to predict the model is responding
 
 (x_train,y_train,x_test,y_test= train_test_split(x,y,random_sixxe=0.2)
 model=GaussianNB
-scalar=StrandScalar
-model.fit(x_train.scalar,y_train.scalar)
-
+scalar=StrandScalar()
+x_train_scaled=scalar.fit_transform(x_train)
+x_test_scaled=scalar.transform(x_test)
+model.fit(x_train_scaled,y_train)
+y_pred=model.predict(x_test_)
