@@ -5,7 +5,7 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression 
 from sklearn.metrics import r2_score, mean_squared_error
-from sklearn.preprocessing
+from sklearn.preprocessing  import StrandScalar
 
 # 1. Load Data
 data = pd.read_csv('Brain Rot Cases (1).csv')
