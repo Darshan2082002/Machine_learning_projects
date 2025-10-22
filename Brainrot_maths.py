@@ -90,7 +90,7 @@ results = {
 results_text = "\n".join([f"{k}: {v}" for k, v in results.items()])
 print("Results:\n", results_text)
 
-# --- Add plot comparing predictions vs actual for both models ---
+
 plt.figure(figsize=(10, 5))
 plt.plot(y_test.values, label="Actual", marker='o')
 plt.plot(y_pred_closed, label="Closed-form OLS Prediction", linestyle='--', marker='x')
