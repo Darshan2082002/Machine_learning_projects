@@ -1,7 +1,6 @@
 from  ultralytics import YOLO
 import cv2
+import numpy as np 
 import random 
-import numpy as np
+import pandas as pd
 import os 
-print("Loading model...")
-model = YOLO("yolo_weights/yolov8n.pt")
