@@ -1,6 +1,5 @@
-from  ultralytics import YOLO
-import cv2
-import numpy as np 
-import random 
-import pandas as pd
-import os 
+from ultralytics import YOLO
+# load the Yolo 
+import cv2 
+model =YOLO("yolo8s.pt")
+print("model loaded successfully")
